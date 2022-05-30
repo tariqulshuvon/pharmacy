@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: layout(~{::title}, ~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Medicine Category</title>
+</head>
+<body>
+
+<section>
+  <h3>Add New Medicine Category</h3>
+
+  <form action="#" th:action="@{/category}" method="post" th:object="${form}">
+
+    <div class="mb-3">
+      <input type="hidden" th:field="*{id}"/>
+      <label for="exampleInputEmail1" class="form-label">Category Name</label>
+      <input type="text" th:field="*{name}" class="form-control" id="exampleInputEmail1"
+             aria-describedby="emailHelp">
+      <ul>
+        <li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error" />
+      </ul>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputdescription" class="form-label">Description</label>
+      <input type="text" th:field="*{description}" class="form-control" id="exampleInputdescription">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</section>
+
+</body>
+</html>

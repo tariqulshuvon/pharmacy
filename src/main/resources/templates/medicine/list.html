@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: layout(~{::title}, ~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Medicine List</title>
+</head>
+<body>
+
+<section>
+  <h3>Medicines</h3>
+
+  <div class="float-end">
+    <a href="/medicine/new" type="button" class="btn btn-primary btn-lg">Add New Product</a>
+  </div>
+
+  <br><br>
+
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Expiry</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${medicines.empty}">
+      <td colspan="2">No Products Available</td>
+    </tr>
+    <tr th:each="med : ${medicines}">
+      <td><span th:text="${med.name}">Name</span></td>
+      <td><span th:text="${med.category?.name}">Category</span></td>
+      <td><span th:text="${#temporals.format(med.expiryDate, 'dd-MM-yyyy')}">Expiry</span></td>
+      <td><span th:text="${med.price}">Price</span></td>
+
+      <td>
+        <a th:href="@{'/medicine/edit/' + ${med.id}}">Edit</a>
+      </td>
+
+      <td>
+        <a th:href="@{'/medicine/delete/' + ${med.id}}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

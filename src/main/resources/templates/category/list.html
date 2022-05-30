@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: layout(~{::title}, ~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+
+<section>
+    <h3>Categories</h3>
+
+    <div class="float-end">
+        <a href="/category/new" type="button" class="btn btn-primary btn-lg">Add New</a>
+    </div>
+
+    <br><br>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+
+            <th>Description</th>
+
+            <th>Total Medicine</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${categories.empty}">
+            <td colspan="2">No Categories Available</td>
+        </tr>
+        <tr th:each="cat : ${categories}">
+            <td><span th:text="${cat.name}">Name</span></td>
+            <td><span th:text="${cat.description}">Description</span></td>
+            <td><span th:text="${cat.medicineCount}">Total Medicine</span></td>
+
+            <td>
+                <a th:href="@{'/category/edit/' + ${cat.id}}">Edit</a>
+            </td>
+
+            <td>
+                <a th:href="@{'/category/delete/' + ${cat.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+</body>
+</html>

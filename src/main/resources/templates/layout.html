@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(title, content)">
+<head>
+  <meta charset="UTF-8">
+  <title th:replace="${title}">Shikder's Pharmacy</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+
+<div th:replace="fragment/navbar.html :: navbar"></div>
+
+<div class="container">
+  <div th:replace="${content}"> </div>
+</div>
+<!-- /.container -->
+
+
+<th:replace layout:fragment="footer"></th:replace>
+<th:block layout:fragment="scripts"></th:block>
+
+</body>
+</html>
