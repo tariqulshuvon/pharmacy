@@ -2,14 +2,15 @@
 
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="layout :: layout(~{::title}, ~{::section})">
+      th:replace="layout :: layout(~{::title}, ~{::section})" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Shikder's Pharmacy</title>
 </head>
 <body>
 <section>
-<h2 style="color:green">Welcome to Shikder's <Pharmacy>Pharmacy</Pharmacy></h2>
+    <h2 style="color:green">Welcome to Shikder's Pharmacy</h2>
+    Welcome <span sec:authentication="principal.username"> User</span>
 </section>
 </body>
 

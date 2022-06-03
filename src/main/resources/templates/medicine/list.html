@@ -12,7 +12,7 @@
   <h3>Medicines</h3>
 
   <div class="float-end">
-    <a href="/medicine/new" type="button" class="btn btn-primary btn-lg">Add New Product</a>
+    <a href="/medicine/new" type="button" class="btn btn-primary btn-lg">Add New Medicine</a>
   </div>
 
   <br><br>
@@ -28,7 +28,7 @@
     </thead>
     <tbody>
     <tr th:if="${medicines.empty}">
-      <td colspan="2">No Products Available</td>
+      <td colspan="2">No Medicine Available</td>
     </tr>
     <tr th:each="med : ${medicines}">
       <td><span th:text="${med.name}">Name</span></td>

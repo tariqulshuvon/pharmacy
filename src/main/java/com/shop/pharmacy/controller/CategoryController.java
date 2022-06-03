@@ -59,8 +59,8 @@ public class CategoryController {
         return "redirect:/category";
     }
 
-    @GetMapping("/edit/{name}")
-    public String editCategory(Model model, @PathVariable(name = "name") long id) {
+    @GetMapping("/edit/{id}")
+    public String editCategory(Model model, @PathVariable(name = "id") long id) {
         categoryService.findById(id).ifPresent(form -> {
             CategoryForm categoryForm = CategoryForm.builder()
                     .id(form.getId())
